@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT</title>
+    <style>
+        .container{
+            border: 2px solid green;
+            height: fit-content;
+            width: 200px;
+            border-radius: 18px;
+            text-align: center;
+            margin: 30%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="margin-top: 20px;">
+            <label for="num1">Number 1</label>
+            <input type="text" id="num1">
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button id="button" onclick="change()">convert to binary</button>
+        </div>
+
+        <h3 id="result">Here goes the result</h3>
+    </div>
+
+    <script type="text/javascript">
+        function change() {
+            let a = Number(document.getElementById('num1').value);
+
+            function decimalToBinary(decimalNumber) {
+                if (decimalNumber === 0) {
+                    return '0';
+                }
+
+                let binary = '';
+                while (decimalNumber > 0) {
+                    const remainder = decimalNumber % 2;
+                    binary = remainder + binary;
+                    decimalNumber = Math.floor(decimalNumber / 2);
+                }
+
+                return binary;
+            }
+
+            const decimalNumber = a;
+            const b = decimalToBinary(decimalNumber);
+            console.log(`The binary representation of ${decimalNumber} is: ${b}`);
+
+            console.log(typeof b);
+            document.getElementById('result').innerHTML = 'The binary is ' + b;
+        }
+    </script>
+</body>
+</html>
